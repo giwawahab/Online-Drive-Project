@@ -1,0 +1,161 @@
+
+
+*, ::after, ::before {
+  box-sizing: border-box;
+}
+
+@font-face{
+	src: url(../fonts/OpenSans-Regular.ttf);
+	font-family: opensans;
+}
+
+@font-face{
+	src: url(../fonts/DancingScript-VariableFont_wght.ttf);
+	font-family: dancingscript;
+}
+
+@font-face{
+	src: url(../fonts/AmaticSC-Regular.ttf);
+	font-family: amatic;
+}
+
+@font-face{
+	src: url(../fonts/SpecialElite-Regular.ttf);
+	font-family: specialelite;
+}
+
+@font-face{
+	src: url(../fonts/Yellowtail-Regular.ttf);
+	font-family: yellowtail;
+}
+
+body{
+
+	font-family: opensans;
+	font-size: 16px;
+	margin:0px;
+	padding:0px;
+	word-break: break-word;
+	word-wrap: break-word;
+}
+
+		
+.class_1{
+
+	width: 100vw;
+	 background-color: rgb(255, 255, 255);
+	padding: 10px;
+	
+}
+
+.class_2{
+
+	width: 100%;
+	max-width: 500px;
+	margin: 10px auto;
+	padding: 10px;
+	  text-align: center;
+	
+}
+
+.class_3{
+
+	padding-left: 10px;
+	padding-right: 10px;
+	font-size: 50px;
+	margin: 0em;
+	font-family: amatic;
+	letter-spacing: 10px;
+	
+}
+
+.class_4{
+
+	width: 200px;
+	height: 200px;
+	object-fit: cover;
+	
+}
+
+.class_5{
+
+	padding-left: 10px;
+	padding-right: 10px;
+	margin: 0em;
+	
+}
+
+.class_6{
+
+	color: rgb(0, 0, 0);
+	text-align: left;
+	
+}
+
+.class_7{
+
+	margin-top:4px;
+	margin-bottom: 4px;
+	padding: 4px;
+	align-items: center;
+	
+}
+
+.class_8{
+
+	margin: .5rem;
+	margin-left:0px;
+	display: inline-block;
+	
+}
+
+.class_9{
+
+	display: block;
+	width: 100%;
+	padding: 15px;
+	font-size: 1rem;
+	font-weight: 400;
+	line-height: 1.5;
+	color: rgb(33, 37, 41);
+	background-color: rgb(237, 237, 237);
+	background-clip: padding-box;
+	appearance: none;
+	border-radius: 20em;
+	transition: border-color 0.15s ease-in-out 0s, box-shadow 0.15s ease-in-out 0s;
+	border: medium none;
+	left: -7px;
+	
+}
+
+.class_10{
+
+	display: block;
+	width: 100%;
+	padding: 15px;
+	font-size: 1rem;
+	font-weight: 400;
+	line-height: 1.5;
+	color: rgb(33, 37, 41);
+	background-color: rgb(237, 237, 237);
+	background-clip: padding-box;
+	appearance: none;
+	border-radius: 20em;
+	transition: border-color 0.15s ease-in-out 0s, box-shadow 0.15s ease-in-out 0s;
+	border: medium none;
+	
+}
+
+.class_11{
+
+	font-size: 16px;
+	padding: 15px;
+	border: medium none;
+	color: rgb(255, 255, 255);
+	background-color: rgb(13, 110, 253);
+	border-radius: 30px;
+	margin: 0.25rem 0.125rem;
+	cursor: pointer;
+	width: 150px;
+	
+}

@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>my drive signup page</title>
+	<link rel="stylesheet" type="text/css" href="assets_signup/css/bootstrap-icons.css">
+	<link rel="stylesheet" type="text/css" href="assets_signup/css/styles.css">
+	<style>
+
+	.hide{
+			display: none;
+		}		
+
+	</style>
+</head>
+<body>
+
+	
+	<section class="class_1" >
+		<form onsubmit="signup.submit(event)" method="post" enctype="multipart/form-data" class="class_2" >
+			<h1 class="class_3"  >
+				MY DRIVE
+				<br>
+			</h1>
+			<img src="assets_signup/images/woman-coming-other-woman-with-ideas-project_74855-11211.jpg" class="class_4" >
+			<h1 class="class_5"  >
+				SIGNUP
+			</h1>
+
+			<div class="js-error-banner hide" style="padding: 10px; text-align: center; background-color: red; color: white;">
+				Please fix the errors below!
+			</div>
+
+			<div class="class_6" >
+				<div class="class_7" >
+					<label class="class_8"  >
+						USERNAME
+					</label>
+					<input placeholder="Enter a Username" type="text" name="username" class="class_9" required>
+				</div>
+				<small class="error error-username hide" style="color: red; font-weight: bold; display: block;">
+				
+				</small>
+				<div class="class_7" >
+					<label class="class_8"  >
+						EMAIL
+					</label>
+					<input placeholder="Enter a valid Email" type="email" name="email" class="class_10" required>
+				</div>
+				<small class="error error-email hide" style="color: red; font-weight: bold; display: block;">
+				
+				</small>
+				<div class="class_7" >
+					<label class="class_8"  >
+						PASSWORD
+					</label>
+					<input placeholder="Enter a password" type="password" name="password" class="class_9" required>
+				</div>
+				<small class="error error-password hide" style="color: red; font-weight: bold; display: block;">
+
+				</small>
+
+				<div class="class_7" >
+					<label class="class_8"  >
+						CONFIRM PASSWORD
+					</label>
+					<input placeholder="Confirm password" type="password" name="retype_password" class="class_9" required>
+				</div>
+			</div>
+			<div style="padding: 10px; text-align: center;">
+				Already have an account? <a href="login.html">Login here</a>
+			</div>
+			<button class="js-button class_11"  >
+				SIGNUP
+			</button>
+		</form>
+	</section>
+	
+</body>
+</html>
+
+<script>
+	
+		const signup = {
+
+			uploading: false,
+			submit: function(ev)
+			{
+				ev.preventDefault();
+				if(signup.uploading){
+					alert("Already uploading. Please wait...");
+					return;
+				}
+				let button = document.querySelector(".js-button");
+				button.innerHTML = `Saving...`;
+
+				let myform = new FormData();
+				myform.append('data_type', 'user_signup');
+
+				//Getting all inputs 
+				let inputs = ev.currentTarget.querySelectorAll("input,select,textarea");
+				for (var i = 0; i < inputs.length; i++) 
+				{
+					myform.append(inputs[i].name, inputs[i].value.trim());
+
+				}
+			
+				signup.uploading = true;
+				let xhr = new XMLHttpRequest();
+				xhr.addEventListener('error', function()
+				{
+					alert('An error occured! Please check your connection');
+				});
+
+				xhr.addEventListener('readystatechange', function()
+				{
+					if(xhr.readyState == 4)
+					{
+						signup.uploading = false;
+						let button = document.querySelector(".js-button");
+						button.innerHTML = `SIGNUP`;
+
+						if(xhr.status == 200)
+						{ 
+							 console.log(xhr.responseText);
+							let obj = JSON.parse(xhr.responseText, true);
+							document.querySelector('.js-error-banner').classList.add("hide");
+
+							if (obj.success && obj.data_type == 'user_signup')
+							{
+								alert("Your account has been created! Please login to continue");
+								window.location.href = "login.html";
+								
+							}else{
+
+								//errors
+								let form = document.querySelector('form');
+								let errors = document.querySelectorAll('.error');
+								document.querySelector('.js-error-banner').classList.remove("hide");
+						
+								//empty old error messages
+								for (var i = 0; i < errors.length; i++) {
+									errors[i].innerHTML = '';
+									errors[i].classList.add("hide");
+								}
+
+								//showing new errors
+								for(key in obj.errors)
+								{
+									let item = document.querySelector('.error-'+key);
+									item.innerHTML = obj.errors[key];
+									item.classList.remove("hide");
+								}
+							}
+				
+						}else{
+
+							console.log(xhr.responseText);
+							alert('An error occured! Please try again');
+						}
+
+					}
+				});
+
+				xhr.open('post', 'api.php', true);
+				xhr.send(myform);
+
+			},
+	};
+
+
+</script>
